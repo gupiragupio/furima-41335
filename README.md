@@ -22,16 +22,16 @@ has_many :order_logs
 
 ##  itemsテーブル
 
-| Column             | Type      | Options                  |
-| ------------------ | ------    | -----------              |
-| item_name          | string    | NOT NULL                 |
-| category           | string    | NOT NULL                 |
-| price              | decimal   | NOT NULL                 |
-| user_id            | references| NOT NULL, FOREIGN KEY制約 |
-| info               | text      | NOT NULL                 |
-| state              | integer   | NOT NULL                 |
-| fee                | decimal   | NOT NULL                 |
-| days               | integer   | NOT NULL                 |
+| Column             | Type      | Options                     |
+| ------------------ | ------    | -----------                 |
+| item_name          | string    | null: false                 |
+| category           | integer   | null: false                 |
+| price              | integer   | null: false                 |
+| user               | references    | null: false, foreign_key: true  |
+| info               | text      | null: false                 |
+| state              | integer   | null: false                 |
+| fee                | integer   | null: false                 |
+| dtime              | integer   | null: false                 |
 
 
 
@@ -44,8 +44,8 @@ has_one :order_log, dependent: :destroy
 
 | Column             | Type      | Options         |
 | ------------------ | ------    | -----------     |
-| user_id            | references| NOT NULL,外部キー|
-| item_id            | references| NOT NULL,外部キー|
+| user               | references    | null: false, foreign_key: true|
+| item               | references    | null: false, foreign_key: true|
 
 ### Association
 belongs_to :user
@@ -56,11 +56,16 @@ has_one :address
 
 | Column             | Type       | Options                           |
 | ------------------ | ------     | -----------                       |
-| order_log_id       |references  | NOT NULL,FOREIGN KEY制約           |
-| street_name        | string     | NOT NULL                          |
-| building_name      | string     |                                   |
-| city               | string     | NOT NULL                          |
-| telephone          | string     | NOT NULL                          |
+| order_log          |references  | null: false, foreign_key: true          |
+| street_name        | string     | null: false                          |
+| building_name      | string     | null: false                                 |
+| city               | string     | null: false                          |
+| telephone          | string     | null: false                         |
+| card_number        | VARCHAR(19)| null: false                          |
+| cvv                | VARCHAR(4) | null: false                                 |
+| postal_code        | VARCHAR(10)| null: false                          |
+| card_expiry        | VARCHAR(5) | null: false                         |
+
 
 
 ### Association
