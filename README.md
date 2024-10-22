@@ -4,13 +4,13 @@
 
 | Column             | Type   | Options             |
 | ------------------ | ------ | -----------         |
-| nickname           | string | NOT NULL, ユニーク制約|
-| email              | string | NOT NULL, ユニーク制約|
+| nickname           | string | NOT NULL            |
+| email              | string | null: false,unique: true|
 | encrypted_password | string | NOT NULL            |
 | first_name         | string | NOT NULL            |
 | last_name          | string | NOT NULL            |
 | first_name_kana    | string | NOT NULL            |
-| last_name_kana    | string | NOT NULL            |
+| last_name_kana     | string | NOT NULL            |
 | birth_date         | date   | NOT NULL            |
 
 
@@ -26,14 +26,19 @@ has_many :order_logs
 | ------------------ | ------    | -----------              |
 | item_name          | string    | NOT NULL                 |
 | category           | string    | NOT NULL                 |
-| price              | integer   | NOT NULL                 |
+| price              | decimal   | NOT NULL                 |
 | user_id            | references| NOT NULL, FOREIGN KEY制約 |
+| info               | text      | NOT NULL                 |
+| state              | integer   | NOT NULL                 |
+| fee                | decimal   | NOT NULL                 |
+| days               | integer   | NOT NULL                 |
+
 
 
 ### Association
 
 belongs_to  :user
-has_many :order_logs, dependent: :destroy
+has_one :order_log, dependent: :destroy
 
 ## order_logsテーブル
 
@@ -41,7 +46,6 @@ has_many :order_logs, dependent: :destroy
 | ------------------ | ------    | -----------     |
 | user_id            | references| NOT NULL,外部キー|
 | item_id            | references| NOT NULL,外部キー|
-| message            | text      | NOT NULL,       |
 
 ### Association
 belongs_to :user
@@ -53,11 +57,10 @@ has_one :address
 | Column             | Type       | Options                           |
 | ------------------ | ------     | -----------                       |
 | order_log_id       |references  | NOT NULL,FOREIGN KEY制約           |
-| address_line1      | string     | NOT NULL                          |
-| address_line2      | string     |                                   |
+| street_name        | string     | NOT NULL                          |
+| building_name      | string     |                                   |
 | city               | string     | NOT NULL                          |
-| state              | string     | NOT NULL                          |
-| country            | string     | NOT NULL                          |
+| telephone          | string     | NOT NULL                          |
 
 
 ### Association
