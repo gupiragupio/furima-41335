@@ -32,8 +32,7 @@ has_many :order_logs
 | state_id                            | integer    | null: false                 |
 | fee_id                              | integer    | null: false                 |
 | time_to_delivery_id                 | integer    | null: false                 |
-| city_id                             | integer    | null: false                 |
-| prefecture _id                      | integer    | null: false                 |
+| prefecture_id                      | integer    | null: false                 |
  
 
 ### Association
@@ -63,7 +62,7 @@ has_one :address
 | city               | string     | null: false                          |
 | telephone          | string     | null: false                         |
 | postal_code        | string     | null: false                          |
-
+| prefecture_id      | integer   | null: false                 |
 
 
 
