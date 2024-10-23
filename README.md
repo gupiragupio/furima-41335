@@ -22,22 +22,24 @@ has_many :order_logs
 
 ##  itemsテーブル
 
-| Column             | Type      | Options                     |
-| ------------------ | ------    | -----------                 |
-| item_name          | string        | null: false                 |
-| category_id          | integer    | null: false                 |
-| price              | integer       | null: false                 |
-| user               | references    | null: false, foreign_key: true  |
-| info               | text         | null: false                 |
-| state_id             | integer    | null: false                 |
-| fee_id              | integer    | null: false                 |
-| dtime_id          | integer    | null: false                 |
-| city_id         | integer    | null: false                 |
+| Column                              | Type       | Options                     |
+| ------------------                  | ------     | -----------                 |
+| item_name                           | string     | null: false                 |
+| category_id                         | integer    | null: false                 |
+| price                               | integer    | null: false                 |
+| user                                | references | null: false, foreign_key: true  |
+| info                                | text       | null: false                 |
+| state_id                            | integer    | null: false                 |
+| fee_id                              | integer    | null: false                 |
+| time_to_delivery_id                 | integer    | null: false                 |
+| city_id                             | integer    | null: false                 |
+| prefecture _id                      | integer    | null: false                 |
+ 
 
 ### Association
 
 belongs_to  :user
-has_one :order_log, dependent: :destroy
+has_one :order_log
 
 ## order_logsテーブル
 
@@ -60,7 +62,7 @@ has_one :address
 | building_name      | string     |                                 |
 | city               | string     | null: false                          |
 | telephone          | string     | null: false                         |
-| postal_code        | VARCHAR(10)| null: false                          |
+| postal_code        | string     | null: false                          |
 
 
 
