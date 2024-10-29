@@ -7,6 +7,16 @@
     <h2 class="items-sell-title">商品の情報を入力</h2>
     <%= form_with model: @item, local: true, html: { multipart: true }  do |f| %>
 
+    <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item.errors.count, "エラー") %>が発生しました:</h2>
+      <ul>
+        <% @item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
     <%# インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
     <%# render 'shared/error_messages', model: f.object %>
     <%# //インスタンスを渡して、エラー発生時にメッセージが表示されるようにしましょう。%>
@@ -24,7 +34,7 @@
         <%= f.file_field :image, id:"item-image" %>
       </div>
     </div>
-    
+
     <div class="image-preview">
       <%if @item.image.attached? %>
     <%= image_tag @item.image  class: 'item-image' %> 
