@@ -1,9 +1,15 @@
 class Category < ActiveHash::Base
   self.data = [
-    { id: 1, name: '食品' },
-    { id: 2, name: '飲料' },
-    { id: 3, name: '家電' }
-    # 他のカテゴリーも必要に応じて追加
+    { id: 1, name: '---' },
+    { id: 2, name: '経済' },
+    { id: 3, name: '政治' },
+    { id: 4, name: '地域' },
+    { id: 5, name: '国際' },
+    { id: 6, name: 'IT' },
+    { id: 7, name: 'エンタメ' },
+    { id: 8, name: 'スポーツ' },
+    { id: 9, name: 'グルメ' },
+    { id: 10, name: 'その他' }
   ]
 
   include ActiveHash::Associations
