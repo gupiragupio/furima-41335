@@ -12,4 +12,7 @@ class Item < ApplicationRecord
   validates :time_to_delivery_id, presence: true
   validates :prefecture_id, presence: true
   validates :image, presence: true
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :category
 end
