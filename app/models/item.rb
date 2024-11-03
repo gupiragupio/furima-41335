@@ -7,7 +7,7 @@ class Item < ApplicationRecord
   validates :category_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
   validates :price, presence: true
   validates :info, presence: true
-  validates :state_id, presence: true
+  validates :state_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
   validates :fee_id, presence: true
   validates :time_to_delivery_id, presence: true
   validates :prefecture_id, presence: true
@@ -15,4 +15,5 @@ class Item < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
+  belongs_to_active_hash :state
 end
