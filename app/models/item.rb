@@ -9,8 +9,8 @@ class Item < ApplicationRecord
   validates :info, presence: true
   validates :state_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
   validates :fee_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
-  validates :time_to_delivery_id, presence: true
-  validates :prefecture_id, presence: true
+  validates :time_to_delivery_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
+  validates :prefecture_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
   validates :image, presence: true
 
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -18,4 +18,5 @@ class Item < ApplicationRecord
   belongs_to_active_hash :state
   belongs_to_active_hash :fee
   belongs_to_active_hash :prefecture
+  belongs_to_active_hash :time_to_delivery
 end
