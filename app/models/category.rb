@@ -5,4 +5,7 @@ class Category < ActiveHash::Base
     { id: 3, name: '家電' }
     # 他のカテゴリーも必要に応じて追加
   ]
+
+  include ActiveHash::Associations
+  has_many :items
 end
