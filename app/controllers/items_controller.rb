@@ -11,7 +11,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path, notice: '商品が出品されました' # 保存成功時の処理
     else
-      render :new # 保存失敗時の処理（出品ページに戻す）
+      render :new, status: :unprocessable_entity
     end
   end
 
