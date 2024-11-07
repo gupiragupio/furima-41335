@@ -96,7 +96,7 @@
           発送までの日数
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:time_to_delivery_id, Time_to_delivery.all, :id, :name, {prompt: "発送までの日数"}, {class:"select-box", id:"item-scheduled-delivery"}) %>
+        <%= f.collection_select(:time_to_delivery_id, TimeToDelivery.all, :id, :name, {prompt: "発送までの日数"}, {class:"select-box", id:"item-scheduled-delivery"}) %>
       </div>
     </div>
     <%# /配送について %>
