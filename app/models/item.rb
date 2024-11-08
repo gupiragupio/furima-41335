@@ -13,7 +13,7 @@ class Item < ApplicationRecord
   validates :fee_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
   validates :time_to_delivery_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
   validates :prefecture_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
-  validates :image, presence: { message: "Image can't be blank" }
+  validates :image, presence: { message: "can't be blank" }
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
