@@ -16,7 +16,7 @@
       profitDom.innerHTML = profit.toLocaleString();
     });
   }
-});
+};
 
 
 window.addEventListener("turbo:load", price);
