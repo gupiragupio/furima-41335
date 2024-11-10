@@ -7,15 +7,7 @@
     <h2 class="items-sell-title">商品の情報を入力</h2>
     <%= form_with model: @item, local: true, html: { multipart: true }  do |f| %>
 
-   <% if @item.errors.any? %>
-  <div id="error_explanation" class="error-alert"> 
-    <ul class="error-message"> 
-      <% @item.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+   <%= render "shared/error_messages", object: @item %>
     
 
     <%# 商品画像 %>
