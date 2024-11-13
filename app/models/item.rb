@@ -23,7 +23,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :time_to_delivery
 
-  def sold?
-    false
-  end
+  # def sold?
+  # false
+  # end
 end
