@@ -137,6 +137,7 @@
           <div class='item-info'>
             <h3 class='item-name'><%= item.item_name %></h3> <!-- 商品名 -->
             <p class='item-price'>¥<%= item.price %></p> <!-- 商品価格 -->
+             <p class='item-shipping-fee'><%= item.fee.name %></p> <!-- 配送料の負担 -->
           </div>
         <% end %>
       </li>
