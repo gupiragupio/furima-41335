@@ -21,4 +21,8 @@ class Item < ApplicationRecord
   belongs_to_active_hash :fee
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :time_to_delivery
+
+  # def sold?
+  # false
+  # end
 end
