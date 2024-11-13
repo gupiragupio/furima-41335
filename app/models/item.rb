@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
+  belongs_to :fee
   # has_one :order_log
   has_one_attached :image
 
