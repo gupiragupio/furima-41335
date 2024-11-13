@@ -133,7 +133,7 @@
         <li class='list'>
           <%# link_to item_path(item) do %> <!-- 商品詳細ページへのリンク -->
           <div class='item-img-content'>
-            <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
+             <%= image_tag(item.image.attached? ? item.image : "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img") %>
 
              <%# 商品が売れていればSold Out!!を表示しましょう %>
             <%# if item.sold? %> <!-- 売れている場合のみ表示 -->
