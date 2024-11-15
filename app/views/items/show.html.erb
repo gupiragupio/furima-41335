@@ -16,7 +16,7 @@
     </div>
     <div class="item-price-box">
       <span class="item-price">
-        <%= @item.price.to_s(:delimited) %>
+        ¥<%= @item.price.to_s(:delimited) %>
       </span>
       <span class="item-postage">
         <%= @item.fee.name %>
@@ -25,13 +25,19 @@
 
     <%# ログインしているユーザーと出品しているユーザーが、同一人物の場合と同一人物ではない場合で、処理を分けましょう %>
 
-    <%= link_to "商品の編集", "#", method: :get, class: "item-red-btn" %>
-    <p class="or-text">or</p>
-    <%= link_to "削除", "#", data: {turbo_method: :delete}, class:"item-destroy" %>
 
+<%# <% if user_signed_in? && current_user == @item.user && !@item.sold? %>
+  <%= link_to "商品の編集", edit_item_path(@item), method: :get, class: "item-red-btn" %>
+  <p class="or-text">or</p>
+  <%= link_to "削除", item_path(@item), data: {turbo_method: :delete}, class:"item-destroy" %>
+<%# end %> 
+
+  
 
     <%# 商品が売れていない場合はこちらを表示しましょう %>
+    <%# <% unless @item.sold? %> <%# 商品購入機能が実装されたらコメントアウトをはすず %>
     <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
+    <%# end %> 
     <%# //商品が売れていない場合はこちらを表示しましょう %>
 
 
