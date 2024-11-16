@@ -2,6 +2,7 @@ class Item < ApplicationRecord
   belongs_to :user
   # has_one :order_log
   has_one_attached :image
+  before_destroy :purge_image
 
   validates :item_name, presence: true
   validates :category_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
@@ -24,4 +25,10 @@ class Item < ApplicationRecord
   # def sold?
   # false
   # end
+
+  private
+
+  def purge_image
+    image.purge if image.attached?
+  end
 end
