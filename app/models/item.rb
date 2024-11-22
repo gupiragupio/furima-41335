@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   # has_one :order_log
   has_one_attached :image
   before_destroy :purge_image
+  has_one :order_log
 
   validates :item_name, presence: true
   validates :category_id, presence: true, numericality: { other_than: 1, message: "can't be blank" }
