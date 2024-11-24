@@ -135,13 +135,13 @@
           <div class='item-img-content'>
              <%= image_tag(item.image.attached? ? item.image : "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img") %>
 
-             <%# 商品が売れていればSold Out!!を表示しましょう %>
+             
             <% if item.sold? %> <!-- 売れている場合のみ表示 -->
               <div class='sold-out'>
                 <span>Sold Out!!</span>
               </div>
             <%end %>
-            <%# //商品が売れていればSold Out!!を表示しましょう %>
+            
           </div>
           <div class='item-info'>
             <h3 class='item-name'><%= item.item_name %></h3> <!-- 商品名 -->
