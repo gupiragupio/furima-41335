@@ -1,17 +1,8 @@
 
 
 <%= render "shared/second-header"%>
+ 
 
-<% if @order.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
-    <ul>
-      <% @order.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
 
 <div class='transaction-contents'>
   <div class='transaction-main'>
@@ -43,8 +34,10 @@
       </p>
     </div>
     <%# /支払額の表示 %>
+    
 
     <%= form_with model: @order, url: item_orders_path(@item), id: 'charge-form', class: 'transaction-form-wrap', local: true do |f| %>
+    <%= render "shared/error_messages", model: f.object %>
     <%# カード情報の入力 %>
     <div class='credit-card-form'>
       
