@@ -7,7 +7,6 @@ RSpec.describe OrderForm, type: :model do
       @item = FactoryBot.create(:item)
       @order_form = FactoryBot.build(:order_form, user_id: @user.id, item_id: @item.id)
 
-      puts @user.inspect
       puts @item.inspect
       puts @order_form.inspect
     end
@@ -82,6 +81,18 @@ RSpec.describe OrderForm, type: :model do
         @order_form.token = ''
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include("Token can't be blank")
+      end
+
+      it 'user_idが空だと購入できない' do
+        @order_form.user_id = nil
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include("User can't be blank")
+      end
+
+      it 'item_idが空だと購入できない' do
+        @order_form.item_id = nil
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include("Item can't be blank")
       end
     end
   end
