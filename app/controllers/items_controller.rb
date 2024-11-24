@@ -53,6 +53,9 @@ class ItemsController < ApplicationController
   end
 
   def check_authorization
-    redirect_to root_path unless current_user == @item.user
+    # 出品者ではない、または売却済みの場合はトップページにリダイレクト
+    return unless current_user != @item.user || @item.sold?
+
+    redirect_to root_path, alert: '編集権限がありません。'
   end
 end
