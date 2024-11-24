@@ -12,18 +12,24 @@ const pay = () => {
 
   const form = document.getElementById('charge-form')
   form.addEventListener("submit", (e) => {
+    e.preventDefault(); // フォーム送信を一時停止
+
     payjp.createToken(numberElement).then(function (response) {
       if (response.error) {
+        alert("カード情報が正しくありません");
       } else {
         const token = response.id;
         const renderDom = document.getElementById("charge-form");
-        const tokenObj = `<input value=${token} name='token'>`;
+        const tokenObj = `<input value=${token} name='token' type="hidden">`;
         renderDom.insertAdjacentHTML("beforeend", tokenObj);
-        debugger;
-        console.log(token)
+
+        numberElement.clear();
+        expiryElement.clear();
+        cvcElement.clear();
+
+        form.submit();
       }
     });
-    e.preventDefault();
   });
 };
 

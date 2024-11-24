@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
   before_action :check_authorization
 
   def index
+    gon.public_key = ENV['PAYJP_PUBLIC_KEY']
     redirect_to root_path, alert: 'この商品はすでに購入されています。' if @item.order_log.present?
     @order = OrderForm.new
   end
